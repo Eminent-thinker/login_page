@@ -2,6 +2,7 @@ import tkinter.messagebox
 from tkinter import * 
 from PIL import Image, ImageTk
 from random import choice, randint, shuffle
+import string as str
 class LoginPage():
    def __init__(self):
        self.canvas = Canvas()
@@ -15,9 +16,9 @@ class LoginPage():
        self.add_button = Button()
     
    def password_generator(self):
-       self.letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-       self.characters = ["@", "#", "&","(", ")","/", "!", "?", "£", "$", "¥", "{", "}"]
-       self.numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+       self.letters = list(str.ascii_letters)
+       self.characters = list("@#&()/!?£$¥{}")
+       self.numbers = list(str.digits)
        list_of_letters = [choice(self.letters) for x in range(randint(4,8))]
        list_of_characters = [choice(self.characters) for x in range(randint(2,4))]
        list_of_numbers = [choice(self.numbers) for x in range(randint(2,4))]
@@ -32,7 +33,7 @@ class LoginPage():
        if self.website == '' and self.password:
           web = tkinter.messagebox.showwarning("showwarning", "please, provide the website name!")
           print(web)
-       elif self.password == '' and self.website:
+       elif self.password == '' and self.                       website:
           pas = tkinter.messagebox.showwarning("showwarning", "please, provide the password!")
           print(pas)
        elif self.password == '' and self.website == '' :
